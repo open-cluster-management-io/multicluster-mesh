@@ -19,7 +19,7 @@ KUSTOMIZE_VERSION?=v3.5.4
 KUSTOMIZE_ARCHIVE_NAME?=kustomize_$(KUSTOMIZE_VERSION)_$(GOHOSTOS)_$(GOHOSTARCH).tar.gz
 kustomize_dir:=$(dir $(KUSTOMIZE))
 
-IMAGE = quay.io/morvencao/multicluster-mesh-addon:ocm
+IMAGE = quay.io/open-cluster-management/multicluster-mesh-addon:latest
 
 all: build
 .PHONY: all
@@ -55,6 +55,14 @@ vet: ## Run go vet against code.
 test: fmt vet ## Run tests.
 	go test ./... -coverprofile cover.out
 
+.PHONY: test-integration
+test-integration:
+	@echo "TODO: Run integration test"
+
+.PHONY: test-e2e
+test-integration:
+	@echo "TODO: Run e2e test"
+
 ##@ Build
 
 .PHONY: build
@@ -63,7 +71,7 @@ build: fmt vet ## Build multicluster-mesh-addon binary.
 
 .PHONY: docker-build
 docker-build: test ## Build docker image with the multicluster-mesh-addon.
-	docker build -t ${IMAGE} .
+	docker build ${IMAGE_BUILD_EXTRA_FLAGS} -t ${IMAGE} .
 
 .PHONY: docker-push
 docker-push: ## Push docker image with the multicluster-mesh-addon.
