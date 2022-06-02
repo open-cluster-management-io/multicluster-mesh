@@ -31,4 +31,3 @@ bash "${CODEGEN_PKG}"/generate-groups.sh "client,lister,informer" \
 mkdir -p ${OUTPUT_PKG}
 cp -a ${MODULE}/${OUTPUT_PKG}/* ${OUTPUT_PKG}
 rm -Rf ${MODULE}
-

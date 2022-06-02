@@ -17,10 +17,10 @@ COPY pkg/ pkg/
 # Build
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -o multicluster-mesh-addon main.go
 
-FROM registry.access.redhat.com/ubi8/ubi-minimal:latest
+FROM alpine:3.13
+
 WORKDIR /
 COPY --from=builder /workspace/multicluster-mesh-addon .
 USER 65532:65532
 
 CMD ["/multicluster-mesh-addon"]
-

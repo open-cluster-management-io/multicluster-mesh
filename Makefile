@@ -44,8 +44,9 @@ help: ## Display this help.
 ##@ Development
 
 .PHONY: fmt
-fmt: ## Run go fmt against code.
+fmt: linelint ## Run go fmt against code.
 	go fmt ./...
+	$(LINELINT) -a .
 
 .PHONY: vet
 vet: ## Run go vet against code.
@@ -60,7 +61,7 @@ test-integration:
 	@echo "TODO: Run integration test"
 
 .PHONY: test-e2e
-test-integration:
+test-e2e:
 	@echo "TODO: Run e2e test"
 
 ##@ Build
@@ -113,6 +114,11 @@ CONTROLLER_GEN = $(shell pwd)/bin/controller-gen
 controller-gen: ## Download controller-gen locally if necessary.
 	$(call go-get-tool,$(CONTROLLER_GEN),sigs.k8s.io/controller-tools/cmd/controller-gen@v0.7.0)
 
+LINELINT = $(shell pwd)/bin/linelint
+.PHONY: linelint
+linelint: ## Download linelint locally if necessary.
+	$(call go-get-tool,$(LINELINT),github.com/fernandrone/linelint@0.0.6)
+
 KUSTOMIZE = $(shell pwd)/bin/kustomize
 .PHONY: kustomize
 kustomize: ## Download kustomize locally if necessary.
@@ -131,4 +137,3 @@ GOBIN=$(PROJECT_DIR)/bin go get $(2) ;\
 rm -rf $$TMP_DIR ;\
 }
 endef
-
