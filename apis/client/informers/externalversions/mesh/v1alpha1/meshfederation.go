@@ -22,14 +22,14 @@ import (
 	"context"
 	time "time"
 
-	versioned "github.com/stolostron/multicluster-mesh-addon/apis/client/clientset/versioned"
-	internalinterfaces "github.com/stolostron/multicluster-mesh-addon/apis/client/informers/externalversions/internalinterfaces"
-	v1alpha1 "github.com/stolostron/multicluster-mesh-addon/apis/client/listers/mesh/v1alpha1"
-	meshv1alpha1 "github.com/stolostron/multicluster-mesh-addon/apis/mesh/v1alpha1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	watch "k8s.io/apimachinery/pkg/watch"
 	cache "k8s.io/client-go/tools/cache"
+	versioned "open-cluster-management.io/multicluster-mesh-addon/apis/client/clientset/versioned"
+	internalinterfaces "open-cluster-management.io/multicluster-mesh-addon/apis/client/informers/externalversions/internalinterfaces"
+	v1alpha1 "open-cluster-management.io/multicluster-mesh-addon/apis/client/listers/mesh/v1alpha1"
+	meshv1alpha1 "open-cluster-management.io/multicluster-mesh-addon/apis/mesh/v1alpha1"
 )
 
 // MeshFederationInformer provides access to a shared informer and lister for

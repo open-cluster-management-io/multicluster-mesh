@@ -16,10 +16,10 @@ import (
 	"k8s.io/client-go/tools/cache"
 	"k8s.io/klog/v2"
 
-	meshclientset "github.com/stolostron/multicluster-mesh-addon/apis/client/clientset/versioned"
-	constants "github.com/stolostron/multicluster-mesh-addon/pkg/constants"
-	meshresourceapply "github.com/stolostron/multicluster-mesh-addon/pkg/resourceapply"
-	meshtranslate "github.com/stolostron/multicluster-mesh-addon/pkg/translate"
+	meshclientset "open-cluster-management.io/multicluster-mesh-addon/apis/client/clientset/versioned"
+	constants "open-cluster-management.io/multicluster-mesh-addon/pkg/constants"
+	meshresourceapply "open-cluster-management.io/multicluster-mesh-addon/pkg/resourceapply"
+	meshtranslate "open-cluster-management.io/multicluster-mesh-addon/pkg/translate"
 )
 
 type istioDiscoveryController struct {

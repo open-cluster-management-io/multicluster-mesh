@@ -15,8 +15,8 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	intstr "k8s.io/apimachinery/pkg/util/intstr"
 
-	meshv1alpha1 "github.com/stolostron/multicluster-mesh-addon/apis/mesh/v1alpha1"
-	constants "github.com/stolostron/multicluster-mesh-addon/pkg/constants"
+	meshv1alpha1 "open-cluster-management.io/multicluster-mesh-addon/apis/mesh/v1alpha1"
+	constants "open-cluster-management.io/multicluster-mesh-addon/pkg/constants"
 )
 
 var istioProfileComponentsMap map[string][]string
