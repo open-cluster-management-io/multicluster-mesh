@@ -39,4 +39,3 @@ rules:
 - apiGroups: ["mesh.open-cluster-management.io"]
   resources: ["meshes", "meshdeployments", "meshfederations"]
   verbs: ["*"]
-

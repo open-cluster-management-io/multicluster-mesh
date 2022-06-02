@@ -23,4 +23,3 @@ COPY --from=builder /workspace/multicluster-mesh-addon .
 USER 65532:65532
 
 CMD ["/multicluster-mesh-addon"]
-
