@@ -19,14 +19,14 @@ limitations under the License.
 package fake
 
 import (
-	clientset "github.com/stolostron/multicluster-mesh-addon/apis/client/clientset/versioned"
-	meshv1alpha1 "github.com/stolostron/multicluster-mesh-addon/apis/client/clientset/versioned/typed/mesh/v1alpha1"
-	fakemeshv1alpha1 "github.com/stolostron/multicluster-mesh-addon/apis/client/clientset/versioned/typed/mesh/v1alpha1/fake"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/discovery"
 	fakediscovery "k8s.io/client-go/discovery/fake"
 	"k8s.io/client-go/testing"
+	clientset "open-cluster-management.io/multicluster-mesh-addon/apis/client/clientset/versioned"
+	meshv1alpha1 "open-cluster-management.io/multicluster-mesh-addon/apis/client/clientset/versioned/typed/mesh/v1alpha1"
+	fakemeshv1alpha1 "open-cluster-management.io/multicluster-mesh-addon/apis/client/clientset/versioned/typed/mesh/v1alpha1/fake"
 )
 
 // NewSimpleClientset returns a clientset that will respond with the provided objects.

@@ -23,13 +23,13 @@ import (
 	sync "sync"
 	time "time"
 
-	versioned "github.com/stolostron/multicluster-mesh-addon/apis/client/clientset/versioned"
-	internalinterfaces "github.com/stolostron/multicluster-mesh-addon/apis/client/informers/externalversions/internalinterfaces"
-	mesh "github.com/stolostron/multicluster-mesh-addon/apis/client/informers/externalversions/mesh"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
+	versioned "open-cluster-management.io/multicluster-mesh-addon/apis/client/clientset/versioned"
+	internalinterfaces "open-cluster-management.io/multicluster-mesh-addon/apis/client/informers/externalversions/internalinterfaces"
+	mesh "open-cluster-management.io/multicluster-mesh-addon/apis/client/informers/externalversions/mesh"
 )
 
 // SharedInformerOption defines the functional option type for SharedInformerFactory.

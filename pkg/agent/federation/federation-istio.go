@@ -20,11 +20,11 @@ import (
 	"k8s.io/client-go/tools/cache"
 	"k8s.io/klog/v2"
 
-	meshv1alpha1informer "github.com/stolostron/multicluster-mesh-addon/apis/client/informers/externalversions/mesh/v1alpha1"
-	meshv1alpha1lister "github.com/stolostron/multicluster-mesh-addon/apis/client/listers/mesh/v1alpha1"
-	meshv1alpha1 "github.com/stolostron/multicluster-mesh-addon/apis/mesh/v1alpha1"
-	certificate "github.com/stolostron/multicluster-mesh-addon/pkg/certificate"
-	constants "github.com/stolostron/multicluster-mesh-addon/pkg/constants"
+	meshv1alpha1informer "open-cluster-management.io/multicluster-mesh-addon/apis/client/informers/externalversions/mesh/v1alpha1"
+	meshv1alpha1lister "open-cluster-management.io/multicluster-mesh-addon/apis/client/listers/mesh/v1alpha1"
+	meshv1alpha1 "open-cluster-management.io/multicluster-mesh-addon/apis/mesh/v1alpha1"
+	certificate "open-cluster-management.io/multicluster-mesh-addon/pkg/certificate"
+	constants "open-cluster-management.io/multicluster-mesh-addon/pkg/constants"
 )
 
 type istioFederationController struct {

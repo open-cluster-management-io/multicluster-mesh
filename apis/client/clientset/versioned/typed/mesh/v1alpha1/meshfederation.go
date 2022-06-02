@@ -22,12 +22,12 @@ import (
 	"context"
 	"time"
 
-	scheme "github.com/stolostron/multicluster-mesh-addon/apis/client/clientset/versioned/scheme"
-	v1alpha1 "github.com/stolostron/multicluster-mesh-addon/apis/mesh/v1alpha1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	types "k8s.io/apimachinery/pkg/types"
 	watch "k8s.io/apimachinery/pkg/watch"
 	rest "k8s.io/client-go/rest"
+	scheme "open-cluster-management.io/multicluster-mesh-addon/apis/client/clientset/versioned/scheme"
+	v1alpha1 "open-cluster-management.io/multicluster-mesh-addon/apis/mesh/v1alpha1"
 )
 
 // MeshFederationsGetter has a method to return a MeshFederationInterface.

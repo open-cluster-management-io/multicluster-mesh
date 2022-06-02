@@ -17,8 +17,8 @@ import (
 	"github.com/openshift/library-go/pkg/operator/resource/resourcehelper"
 	"github.com/openshift/library-go/pkg/operator/resource/resourcemerge"
 
-	meshv1alpha1client "github.com/stolostron/multicluster-mesh-addon/apis/client/clientset/versioned/typed/mesh/v1alpha1"
-	meshv1alpha1 "github.com/stolostron/multicluster-mesh-addon/apis/mesh/v1alpha1"
+	meshv1alpha1client "open-cluster-management.io/multicluster-mesh-addon/apis/client/clientset/versioned/typed/mesh/v1alpha1"
+	meshv1alpha1 "open-cluster-management.io/multicluster-mesh-addon/apis/mesh/v1alpha1"
 )
 
 func ApplyMesh(ctx context.Context, client meshv1alpha1client.MeshesGetter, recorder events.Recorder, required *meshv1alpha1.Mesh) (*meshv1alpha1.Mesh, bool, error) {

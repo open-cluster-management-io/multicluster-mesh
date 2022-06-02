@@ -27,11 +27,11 @@ import (
 	addonapiv1alpha1 "open-cluster-management.io/api/addon/v1alpha1"
 	clusterv1 "open-cluster-management.io/api/cluster/v1"
 
-	meshclientset "github.com/stolostron/multicluster-mesh-addon/apis/client/clientset/versioned"
-	meshinformer "github.com/stolostron/multicluster-mesh-addon/apis/client/informers/externalversions"
-	constants "github.com/stolostron/multicluster-mesh-addon/pkg/constants"
-	meshdeployment "github.com/stolostron/multicluster-mesh-addon/pkg/manager/deployment"
-	meshfederation "github.com/stolostron/multicluster-mesh-addon/pkg/manager/federation"
+	meshclientset "open-cluster-management.io/multicluster-mesh-addon/apis/client/clientset/versioned"
+	meshinformer "open-cluster-management.io/multicluster-mesh-addon/apis/client/informers/externalversions"
+	constants "open-cluster-management.io/multicluster-mesh-addon/pkg/constants"
+	meshdeployment "open-cluster-management.io/multicluster-mesh-addon/pkg/manager/deployment"
+	meshfederation "open-cluster-management.io/multicluster-mesh-addon/pkg/manager/federation"
 )
 
 var (

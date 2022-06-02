@@ -19,11 +19,11 @@ import (
 	"open-cluster-management.io/addon-framework/pkg/lease"
 	"open-cluster-management.io/addon-framework/pkg/version"
 
-	meshclientset "github.com/stolostron/multicluster-mesh-addon/apis/client/clientset/versioned"
-	meshinformer "github.com/stolostron/multicluster-mesh-addon/apis/client/informers/externalversions"
-	meshdeploy "github.com/stolostron/multicluster-mesh-addon/pkg/agent/deploy"
-	meshdiscovery "github.com/stolostron/multicluster-mesh-addon/pkg/agent/discovery"
-	meshfederation "github.com/stolostron/multicluster-mesh-addon/pkg/agent/federation"
+	meshclientset "open-cluster-management.io/multicluster-mesh-addon/apis/client/clientset/versioned"
+	meshinformer "open-cluster-management.io/multicluster-mesh-addon/apis/client/informers/externalversions"
+	meshdeploy "open-cluster-management.io/multicluster-mesh-addon/pkg/agent/deploy"
+	meshdiscovery "open-cluster-management.io/multicluster-mesh-addon/pkg/agent/discovery"
+	meshfederation "open-cluster-management.io/multicluster-mesh-addon/pkg/agent/federation"
 )
 
 //go:embed manifests

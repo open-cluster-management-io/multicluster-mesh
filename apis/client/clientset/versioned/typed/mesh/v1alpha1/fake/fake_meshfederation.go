@@ -21,13 +21,13 @@ package fake
 import (
 	"context"
 
-	v1alpha1 "github.com/stolostron/multicluster-mesh-addon/apis/mesh/v1alpha1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	labels "k8s.io/apimachinery/pkg/labels"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	types "k8s.io/apimachinery/pkg/types"
 	watch "k8s.io/apimachinery/pkg/watch"
 	testing "k8s.io/client-go/testing"
+	v1alpha1 "open-cluster-management.io/multicluster-mesh-addon/apis/mesh/v1alpha1"
 )
 
 // FakeMeshFederations implements MeshFederationInterface

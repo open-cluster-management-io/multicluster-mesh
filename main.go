@@ -12,9 +12,9 @@ import (
 	_ "k8s.io/component-base/logs/json/register"
 	"open-cluster-management.io/addon-framework/pkg/version"
 
-	meshagent "github.com/stolostron/multicluster-mesh-addon/pkg/agent"
-	constants "github.com/stolostron/multicluster-mesh-addon/pkg/constants"
-	meshmanager "github.com/stolostron/multicluster-mesh-addon/pkg/manager"
+	meshagent "open-cluster-management.io/multicluster-mesh-addon/pkg/agent"
+	constants "open-cluster-management.io/multicluster-mesh-addon/pkg/constants"
+	meshmanager "open-cluster-management.io/multicluster-mesh-addon/pkg/manager"
 )
 
 func main() {
