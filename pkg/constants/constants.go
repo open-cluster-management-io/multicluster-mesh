@@ -2,7 +2,7 @@ package constants
 
 // mesh addon constants
 const (
-	DefaultMeshAddonImage               = "quay.io/morvencao/multicluster-mesh-addon:ocm"
+	DefaultMeshAddonImage               = "quay.io/open-cluster-management/multicluster-mesh-addon:latest"
 	MeshAddonName                       = "multicluster-mesh"
 	MeshAgentNamespace                  = "open-cluster-management-agent-addon"
 	LabelKeyForDiscoveriedMesh          = "mesh.open-cluster-management.io/discovery"

@@ -102,13 +102,13 @@ cd demo && ./demo
 1. Build and push docker image:
 
     ```bash
-    make docker-build docker-push IMAGE=quay.io/<your_quayio_username>/multicluster-mesh-addon:ocm
+    make docker-build docker-push IMAGE=quay.io/<your_quayio_username>/multicluster-mesh-addon:latest
     ```
 
 2. Deploy the multicluster-mesh-addon to hub cluster:
 
     ```
-    make deploy IMAGE=quay.io/<your_quayio_username>/multicluster-mesh-addon:ocm
+    make deploy IMAGE=quay.io/<your_quayio_username>/multicluster-mesh-addon:latest
     ```
 
 ## How to use

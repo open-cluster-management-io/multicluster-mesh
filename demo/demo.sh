@@ -71,9 +71,9 @@ kind load docker-image docker.io/istio/examples-bookinfo-reviews-v2:1.16.2 --nam
 kind load docker-image docker.io/istio/examples-bookinfo-reviews-v3:1.16.2 --name cluster2 > /dev/null 2>&1 &
 
 printf "\n\nDeploy multicluster-mesh-addon in hub cluster.\n"
-pe "git clone git@github.com:morvencao/multicluster-mesh-addon.git -b ocm_version && cd multicluster-mesh-addon"
+pe "git clone git@github.com:open-cluster-management-io/multicluster-mesh.git && cd multicluster-mesh"
 pe "kubectl config use-context kind-hub && make deploy"
-pei  "cd .. && rm -rf multicluster-mesh-addon"
+pei  "cd .. && rm -rf multicluster-mesh"
 
 printf "\nMake sure the multicluster-mesh-addon is up and running in hub cluster.\n"
 pe "kubectl -n open-cluster-management get pod -l app=multicluster-mesh-addon --context ${CTX_HUB_CLUSTER}"

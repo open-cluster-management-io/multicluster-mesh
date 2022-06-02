@@ -51,8 +51,8 @@ kubectl get managedcluster --context ${CTX_HUB_CLUSTER}
 1. Deploy multicluster-mesh-addon in hub cluster:
 
 ```bash
-git clone git@github.com:morvencao/multicluster-mesh-addon.git -b ocm_version
-cd multicluster-mesh-addon
+git clone git@github.com:open-cluster-management-io/multicluster-mesh.git
+cd multicluster-mesh
 kubectl config use-context kind-hub
 make deploy
 ```
