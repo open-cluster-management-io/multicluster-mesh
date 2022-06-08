@@ -1,0 +1,27 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: multicluster-mesh-addon
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: multicluster-mesh-addon
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: multicluster-mesh-addon
+  template:
+    metadata:
+      labels:
+        app: multicluster-mesh-addon
+    spec:
+      serviceAccountName: multicluster-mesh-addon
+      containers:
+      - name: multicluster-mesh-addon
+        image: multicluster-mesh-addon
+        image: {{ .Values.registry }}/{{ .Values.image }}:{{ .Values.tag }}
+        imagePullPolicy: IfNotPresent
+        command:
+        - "/multicluster-mesh-addon"
+        - "controller"
+        - "-v=2"
