@@ -1,6 +1,6 @@
 // Package v1alpha1 contains API Schema definitions for the mesh v1alpha1 API group
-//+kubebuilder:object:generate=true
-//+groupName=mesh.open-cluster-management.io
+// +kubebuilder:object:generate=true
+// +groupName=mesh.open-cluster-management.io
 package v1alpha1
 
 import (

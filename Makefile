@@ -14,10 +14,6 @@ endif
 # Tools for deploy
 KUBECTL?=kubectl
 PWD=$(shell pwd)
-KUSTOMIZE?=$(PWD)/$(PERMANENT_TMP_GOPATH)/bin/kustomize
-KUSTOMIZE_VERSION?=v3.5.4
-KUSTOMIZE_ARCHIVE_NAME?=kustomize_$(KUSTOMIZE_VERSION)_$(GOHOSTOS)_$(GOHOSTARCH).tar.gz
-kustomize_dir:=$(dir $(KUSTOMIZE))
 
 IMAGE ?= quay.io/open-cluster-management/multicluster-mesh-addon:latest
 
@@ -44,13 +40,16 @@ help: ## Display this help.
 ##@ Development
 
 .PHONY: fmt
-fmt: linelint ## Run go fmt against code.
+fmt: ## Run go fmt against code.
 	go fmt ./...
-	$(LINELINT) -a .
 
 .PHONY: vet
 vet: ## Run go vet against code.
 	go vet ./...
+
+.PHONY: lint
+lint: golangci-lint ## Run golangci-lint against code.
+	$(GOLANGCI_LINT) run
 
 .PHONY: test
 test: fmt vet ## Run tests.
@@ -109,31 +108,40 @@ deploy: kustomize
 undeploy: kustomize
 	$(KUSTOMIZE) build deploy | $(KUBECTL) delete --ignore-not-found -f -
 
-CONTROLLER_GEN = $(shell pwd)/bin/controller-gen
-.PHONY: controller-gen
-controller-gen: ## Download controller-gen locally if necessary.
-	$(call go-get-tool,$(CONTROLLER_GEN),sigs.k8s.io/controller-tools/cmd/controller-gen@v0.7.0)
+## Location to install dependencies to
+LOCALBIN ?= $(shell pwd)/bin
+$(LOCALBIN):
+	mkdir -p $(LOCALBIN)
 
-LINELINT = $(shell pwd)/bin/linelint
-.PHONY: linelint
-linelint: ## Download linelint locally if necessary.
-	$(call go-get-tool,$(LINELINT),github.com/fernandrone/linelint@0.0.6)
+GOLANGCI_LINT = $(LOCALBIN)/golangci-lint
+KUSTOMIZE ?= $(LOCALBIN)/kustomize
+CONTROLLER_GEN ?= $(LOCALBIN)/controller-gen
 
-KUSTOMIZE = $(shell pwd)/bin/kustomize
+## Tool Versions
+GOLANGCI_LINT_VERSION ?= v1.54.2
+KUSTOMIZE_VERSION ?= v5.2.1
+CONTROLLER_TOOLS_VERSION ?= v0.13.0
+
+
+.PHONY: golangci-lint
+golangci-lint:
+	@[ -f $(GOLANGCI_LINT) ] || { \
+	set -e ;\
+	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(shell dirname $(GOLANGCI_LINT)) $(GOLANGCI_LINT_VERSION) ;\
+	}
+
 .PHONY: kustomize
-kustomize: ## Download kustomize locally if necessary.
-	$(call go-get-tool,$(KUSTOMIZE),sigs.k8s.io/kustomize/kustomize/v3@v3.8.7)
+kustomize: $(KUSTOMIZE) ## Download kustomize locally if necessary. If wrong version is installed, it will be removed before downloading.
+$(KUSTOMIZE): $(LOCALBIN)
+	@if test -x $(LOCALBIN)/kustomize && ! $(LOCALBIN)/kustomize version | grep -q $(KUSTOMIZE_VERSION); then \
+		echo "$(LOCALBIN)/kustomize version is not expected $(KUSTOMIZE_VERSION). Removing it before installing."; \
+		rm -rf $(LOCALBIN)/kustomize; \
+	fi
+	test -s $(LOCALBIN)/kustomize || GOBIN=$(LOCALBIN) GO111MODULE=on go install sigs.k8s.io/kustomize/kustomize/v5@$(KUSTOMIZE_VERSION)
 
-# go-get-tool will 'go get' any package $2 and install it to $1.
-PROJECT_DIR := $(shell dirname $(abspath $(lastword $(MAKEFILE_LIST))))
-define go-get-tool
-@[ -f $(1) ] || { \
-set -e ;\
-TMP_DIR=$$(mktemp -d) ;\
-cd $$TMP_DIR ;\
-go mod init tmp ;\
-echo "Downloading $(2)" ;\
-GOBIN=$(PROJECT_DIR)/bin go get $(2) ;\
-rm -rf $$TMP_DIR ;\
-}
-endef
+.PHONY: controller-gen
+controller-gen: $(CONTROLLER_GEN) ## Download controller-gen locally if necessary. If wrong version is installed, it will be overwritten.
+$(CONTROLLER_GEN): $(LOCALBIN)
+	test -s $(LOCALBIN)/controller-gen && $(LOCALBIN)/controller-gen --version | grep -q $(CONTROLLER_TOOLS_VERSION) || \
+	GOBIN=$(LOCALBIN) go install sigs.k8s.io/controller-tools/cmd/controller-gen@$(CONTROLLER_TOOLS_VERSION)
+
