@@ -18,7 +18,6 @@ spec:
       serviceAccountName: multicluster-mesh-addon
       containers:
       - name: multicluster-mesh-addon
-        image: multicluster-mesh-addon
         image: {{ .Values.registry }}/{{ .Values.image }}:{{ .Values.tag }}
         imagePullPolicy: IfNotPresent
         command:
