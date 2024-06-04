@@ -92,7 +92,7 @@ cd demo && ./demo
 ### Prerequisites
 
 - Ensure [docker](https://docs.docker.com/get-started) 18.03+ is installed.
-- Ensure [golang](https://golang.org/doc/install) 1.17+ is installed.
+- Ensure [golang](https://golang.org/doc/install) 1.19+ is installed.
 - Prepare an environment of [OCM](https://open-cluster-management.io/getting-started/core/) and login to the hub cluster with `kubectl` command line tool.
 - Make sure at least one managed cluster imported to the OCM hub cluster.
 - For mesh federation support, make sure at least two managed clusters are imported and the cloud provider must support the network load balancer IP so that the meshes spanning across managed clusters can be connected.
